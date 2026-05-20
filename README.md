@@ -209,6 +209,54 @@ Cập nhật locales/en.default.json.
 
 ---
 
+### 🔴 Visual test — So sánh full page live vs Figma
+
+**Setup lần đầu (chỉ 1 lần):**
+```
+npm install
+npx playwright install chromium
+```
+
+**Chạy test toàn trang:**
+```
+/shopify-visual-test <figma-page-url> http://127.0.0.1:9292 desktop
+```
+
+Hoặc prompt thủ công:
+```
+So sánh toàn bộ trang đang chạy local với Figma design.
+
+Figma URL: <figma-page-url>   ← node-id trỏ vào page frame (toàn trang)
+Local URL: http://127.0.0.1:9292
+Viewport: desktop
+
+Bước 1: get_screenshot từ Figma (full page frame)
+Bước 2: node scripts/screenshot.mjs http://127.0.0.1:9292 "" fullpage desktop
+Bước 3: Phân tích cấu trúc trang (Header, Hero, Products, Footer...)
+Bước 4: So sánh từng section và báo cáo sai lệch:
+  - Spacing > ±2px → MustFix
+  - Font size > ±1px → MustFix
+  - Màu sắc khác → MustFix
+  - Layout/grid sai → MustFix
+Bước 5: Fix tất cả MustFix, re-screenshot để confirm.
+```
+
+Kết quả Claude trả về dạng:
+```
+## Hero Banner
+❌ padding-top: Figma=80px, Live=64px (delta: 16px) — MustFix
+❌ font-size h1: Figma=48px, Live=40px (delta: 8px) — MustFix
+✅ background: #ffffff
+
+## Featured Products
+❌ grid gap: Figma=24px, Live=16px — MustFix
+✅ 4 columns layout
+
+Tổng: 3 MustFix | 0 Minor
+```
+
+---
+
 ### 🔵 Figma utilities
 
 ```

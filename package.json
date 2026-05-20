@@ -7,12 +7,16 @@
     "pull": "shopify theme pull --store store-url.myshopify.com",
     "push": "shopify theme push --store store-url.myshopify.com",
     "dev": "shopify theme dev --store store-url.myshopify.com",
-    "sass": "sass --watch ./style.scss:./assets/style.css"
+    "sass": "sass --watch ./style.scss:./assets/style.css",
+    "screenshot": "node scripts/screenshot.mjs"
   },
   "dependencies": {
     "sass": "^1.78.0"
   },
   "devDependencies": {
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.44.0",
+    "pngjs": "^7.0.0",
     "prettier": "3.3.3"
   }
 }
