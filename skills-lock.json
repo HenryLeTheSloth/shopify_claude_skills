@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "skills": {
+    "figma-code-connect": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "computedHash": "33a5102d4a797399b10b9f0eef1f12b36493b6e5ffc9e82de10082c055514b5b"
+    },
+    "figma-create-design-system-rules": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "computedHash": "bdf41fc9ae3c3c9428ce19b224d19073c1f4de774e8cec4b68b70fc7f681d3f4"
+    },
+    "figma-create-new-file": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "computedHash": "47a9f39350e7fe0a5d0676d047d413e3df1eef6a162091cb6cb7f7c2e313632c"
+    },
+    "figma-generate-design": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "computedHash": "7ae46baafca21340b75625c36fc908485ebcaad2bfeea372e2be472598bc1522"
+    },
+    "figma-generate-library": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "computedHash": "ab961fd20aeb18ae9e7eb4ed655f15bbd50c7c00ab5976e9e043a705e31b3ea7"
+    },
+    "figma-implement-design": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "computedHash": "4854d7c6e2d4f6e6e3e31515adfb47da8cfceebb554bec6799712803ab1b6035"
+    },
+    "figma-use": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "computedHash": "7d254aa5bd4acdafa76ecb95eb51489cb4dbf9a2a994f1e35bf744c2a7acb217"
+    },
+    "scss-best-practices": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "699729dff09e50495891b6956cffdbd148724f8f4cd4668e91c0e3d5b37084ce"
+    },
+    "shopify-liquid": {
+      "source": "shopify/shopify-ai-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/shopify-liquid/SKILL.md",
+      "computedHash": "63b8aff4157281e03f200b7417ea852f6e7ab1deba405effac851570b2f486d3"
+    },
+    "shopify-liquid-themes": {
+      "source": "benjaminsehl/liquid-skills",
+      "sourceType": "github",
+      "computedHash": "4c4afe344d3e9b2b7da15a50aa9cb1863de01054e7e61f94119f3b4367bee67d"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "computedHash": "6337038fe1fe6bbe1b9f252ab678ee575859190bab6f0f246f4061824eb40875"
+    }
+  }
+}

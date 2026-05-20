@@ -1,0 +1,102 @@
+// =============================================================================
+// BASE.SCSS — Shared Design System Foundation
+// =============================================================================
+// Static tokens → SCSS variables ($color-*, $space-*, $rounded-*)
+// Dynamic settings → inline CSS custom properties ONLY via style="" in Liquid
+//
+// When starting a new project: populate token values from Figma
+// Run: /shopify-tokens-setup <figma-url>
+// =============================================================================
+
+
+// -----------------------------------------------------------------------------
+// 1. Colors
+//    Fill from Figma color variables (get_variable_defs)
+// -----------------------------------------------------------------------------
+// $color-text:        #;
+// $color-bg:          #;
+// $color-highlight:   #;
+// $color-button:      #;
+// $color-button-text: #;
+
+
+// -----------------------------------------------------------------------------
+// 2. Spacing
+//    Fill from Figma spacing variables
+// -----------------------------------------------------------------------------
+// $space-xs:  px;
+// $space-sm:  px;
+// $space-md:  px;
+// $space-lg:  px;
+// $space-xl:  px;
+// $space-2xl: px;
+
+
+// -----------------------------------------------------------------------------
+// 3. Border Radius
+//    Fill from Figma
+// -----------------------------------------------------------------------------
+// $rounded-sm: px;
+// $rounded-md: px;
+// $rounded-lg: px;
+
+
+// -----------------------------------------------------------------------------
+// 4. Typography
+//    Each Figma text style → 1 mixin
+//    Naming follows Figma text style names
+// -----------------------------------------------------------------------------
+// @mixin heading-xl {
+//   font-family: ;
+//   font-weight: ;
+//   font-size:   px;
+//   line-height: ;
+// }
+
+// @mixin body-base {
+//   font-family: ;
+//   font-weight: ;
+//   font-size:   px;
+//   line-height: ;
+// }
+
+
+// -----------------------------------------------------------------------------
+// 5. Breakpoint Mixins (Shared — no changes per project)
+// -----------------------------------------------------------------------------
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin wide-down {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// 6. Shared Utility Mixins
+// -----------------------------------------------------------------------------
+// @mixin visually-hidden { ... }
+// @mixin truncate { ... }

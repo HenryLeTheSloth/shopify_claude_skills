@@ -1,0 +1,18 @@
+{
+  "name": "Shopify theme base template",
+  "version": "1.0.0",
+  "description": "Shopify theme base template",
+  "author": "Fedor Tran",
+  "scripts": {
+    "pull": "shopify theme pull --store store-url.myshopify.com",
+    "push": "shopify theme push --store store-url.myshopify.com",
+    "dev": "shopify theme dev --store store-url.myshopify.com",
+    "sass": "sass --watch ./style.scss:./assets/style.css"
+  },
+  "dependencies": {
+    "sass": "^1.78.0"
+  },
+  "devDependencies": {
+    "prettier": "3.3.3"
+  }
+}
