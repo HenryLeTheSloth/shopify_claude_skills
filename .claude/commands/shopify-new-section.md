@@ -1,5 +1,5 @@
 ---
-description: Scaffold a new Shopify section with correct Liquid structure, schema, stylesheet, and i18n
+description: Scaffold a new Shopify section with correct Liquid structure, schema, and stylesheet
 ---
 
 Create a new Shopify section named: **$ARGUMENTS**
@@ -43,14 +43,14 @@ File: `sections/$ARGUMENTS.liquid` (kebab-case)
 
 {% schema %}
 {
-  "name": "t:sections.SECTION_NAME.name",
+  "name": "Section Name",
   "settings": [
-    { "type": "range", "id": "padding_top", "label": "t:labels.padding_top",
+    { "type": "range", "id": "padding_top", "label": "Padding top",
       "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 },
-    { "type": "range", "id": "padding_bottom", "label": "t:labels.padding_bottom",
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom",
       "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 }
   ],
-  "presets": [{ "name": "t:sections.SECTION_NAME.name" }]
+  "presets": [{ "name": "Section Name" }]
 }
 {% endschema %}
 ```
@@ -59,25 +59,11 @@ Rules:
 - All CSS inside `{% stylesheet %}` — no separate CSS file
 - All colors/spacing/radius use `var(--token)` from `base.scss`
 - Responsive: `@media (max-width: 767px)` directly inside `{% stylesheet %}`
-- All user-facing text via `{{ 'key' | t }}`
+- User-facing text written directly as plain English in templates and schema labels/defaults
 - Use `{% render %}` not `{% include %}`
 - `{{ block.shopify_attributes }}` on each block wrapper
 
-## Step 5 — Update locales/en.default.json
-
-Add translation keys for the new section:
-
-```json
-{
-  "sections": {
-    "section_name": {
-      "name": "Section Name"
-    }
-  }
-}
-```
-
-## Step 6 — Validate
+## Step 5 — Validate
 
 ```bash
 node .agents/skills/shopify-liquid/scripts/validate.mjs \
@@ -89,6 +75,6 @@ node .agents/skills/shopify-liquid/scripts/validate.mjs \
 
 Fix any errors, re-validate if needed.
 
-## Step 7 — Report
+## Step 6 — Report
 
 List files created and any schema settings the user should customize.

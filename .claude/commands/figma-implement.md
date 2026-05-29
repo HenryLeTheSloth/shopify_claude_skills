@@ -96,11 +96,9 @@ Read back in SCSS with `var()` + fallback: `padding-top: var(--hero-pt, 36px);`
 - Vanilla JS only — no libraries
 - Web Components pattern for interactive elements
 
-**i18n — all user-facing text:**
-```liquid
-{{- 'sections.name.heading' | t -}}
-```
-Update `locales/en.default.json` with every new key.
+**User-facing text:**
+- Write text directly as plain English in the template and in schema labels/defaults
+- No translation keys, no `| t` filter, no `locales/en.default.json` edits
 
 **Blocks:**
 - Add `{{ block.shopify_attributes }}` on the block wrapper element

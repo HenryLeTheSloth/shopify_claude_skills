@@ -31,10 +31,6 @@ For each file in scope, check:
 - [ ] Section missing `{% schema %}` with `padding_top` / `padding_bottom`
 - [ ] Block wrapper missing `{{ block.shopify_attributes }}`
 
-**i18n violations (must fix):**
-- [ ] Hardcoded user-facing strings (`<h2>Featured Products</h2>`) → `{{ 'key' | t }}`
-- [ ] Missing keys in `locales/en.default.json`
-
 **Doc violations (should fix):**
 - [ ] Snippet missing `{% doc %}` header
 - [ ] Static block missing `{% doc %}` header
