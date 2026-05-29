@@ -32,11 +32,13 @@ const VIEWPORTS = {
 
 const viewportSize = VIEWPORTS[viewport] ?? VIEWPORTS.desktop;
 const browser = await chromium.launch({
-  args: ['--force-device-scale-factor=1'],
+  executablePath: '/usr/bin/google-chrome-stable',
+  args: ['--force-device-scale-factor=1', '--no-sandbox'],
 });
 const context = await browser.newContext({
   deviceScaleFactor: 1,
   viewport: viewportSize,
+  userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
 });
 const page = await context.newPage();
 
