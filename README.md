@@ -12,8 +12,16 @@
 
 ### 1. Clone project
 
+**HTTPS:**
+
 ```
 git clone https://github.com/litos-dev2026/shopify-template-liquid.git . && rm -rf .git
+```
+
+**SSH:**
+
+```
+git clone git@github.com:litos-dev2026/shopify-template-liquid.git . && rm -rf .git
 ```
 
 ### 2. Cài dependencies
@@ -22,7 +30,17 @@ git clone https://github.com/litos-dev2026/shopify-template-liquid.git . && rm -
 npm install
 ```
 
-### 3. Chạy development
+### 3. Cấu hình store URL
+
+Mở `package.json` và thay `store-url.myshopify.com` bằng store thực tế của bạn trong các script `pull`, `push`, `dev`:
+
+```
+"pull": "shopify theme pull --store your-store.myshopify.com",
+"push": "shopify theme push --store your-store.myshopify.com",
+"dev": "shopify theme dev --store your-store.myshopify.com",
+```
+
+### 4. Chạy development
 
 Chạy 2 command song song:
 
