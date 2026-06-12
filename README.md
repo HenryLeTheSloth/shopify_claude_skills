@@ -8,6 +8,53 @@
 
 ---
 
+## ✅ Yêu cầu tiên quyết (Prerequisites)
+
+Trước khi cài đặt, máy bạn cần có sẵn các công cụ sau:
+
+| Công cụ | Phiên bản | Ghi chú |
+|---------|-----------|---------|
+| **Node.js** | **v22.x** (LTS) | Khuyến nghị cài qua [nvm](https://github.com/nvm-sh/nvm) |
+| **npm** | v10+ | Đi kèm khi cài Node.js |
+| **Shopify CLI** | v4+ | Develop / pull / push theme |
+| **Git** | mới nhất | Để clone project |
+| **Tài khoản Shopify** | — | Có quyền truy cập store (Partner hoặc Staff) để `pull` / `push` theme |
+
+### 1. Cài Node.js v22 (qua nvm)
+
+```bash
+# Cài nvm (nếu chưa có) — xem https://github.com/nvm-sh/nvm
+nvm install 22
+nvm use 22
+
+# Kiểm tra
+node -v   # v22.x.x
+npm -v    # 10.x.x
+```
+
+> 💡 Có thể thêm file `.nvmrc` chứa nội dung `22` vào project để tự động chọn đúng version với `nvm use`.
+
+### 2. Cài Shopify CLI
+
+```bash
+npm install -g @shopify/cli
+
+# Kiểm tra
+shopify version   # 4.x.x
+```
+
+> ⚠️ Shopify CLI cần Node.js để chạy — hãy cài Node v22 trước.
+
+### 3. (Tùy chọn) Playwright — cho Visual Test
+
+Chỉ cần nếu bạn dùng tính năng [Visual test](#-visual-test--so-sánh-full-page-live-vs-figma):
+
+```bash
+npx playwright install chromium
+```
+
+---
+
 ## ⚙️ Cài đặt
 
 ### 1. Clone project
