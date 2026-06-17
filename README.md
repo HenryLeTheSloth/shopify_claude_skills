@@ -17,8 +17,10 @@ Trước khi cài đặt, máy bạn cần có sẵn các công cụ sau:
 | **Node.js** | **v22.x** (LTS) | Khuyến nghị cài qua [nvm](https://github.com/nvm-sh/nvm) |
 | **npm** | v10+ | Đi kèm khi cài Node.js |
 | **Shopify CLI** | v4+ | Develop / pull / push theme |
+| **Firecrawl CLI** | v1+ | Cho các command `/site-*` (audit & clone website) |
 | **Git** | mới nhất | Để clone project |
 | **Tài khoản Shopify** | — | Có quyền truy cập store (Partner hoặc Staff) để `pull` / `push` theme |
+| **API key Firecrawl** | — | Lấy tại [firecrawl.dev](https://www.firecrawl.dev) (dạng `fc-...`) |
 
 ### 1. Cài Node.js v22 (qua nvm)
 
@@ -45,7 +47,29 @@ shopify version   # 4.x.x
 
 > ⚠️ Shopify CLI cần Node.js để chạy — hãy cài Node v22 trước.
 
-### 3. (Tùy chọn) Playwright — cho Visual Test
+### 3. Cài Firecrawl CLI
+
+Cần cho các command `/site-*` (audit & clone website).
+
+```bash
+npm install -g firecrawl-cli
+
+# Kiểm tra
+firecrawl --version   # 1.x.x
+```
+
+**Đăng nhập (1 lần)** — dán API key (`fc-...`) lấy từ [firecrawl.dev](https://www.firecrawl.dev):
+
+```bash
+firecrawl config        # nhập API key khi được hỏi → lưu vào ~/.config/firecrawl-cli
+
+# Kiểm tra đã xác thực & còn credit
+firecrawl --status
+```
+
+> 💡 Sau khi `firecrawl config`, key được lưu sẵn nên **không cần** set biến môi trường `FIRECRAWL_API_KEY`.
+
+### 4. (Tùy chọn) Playwright — cho Visual Test
 
 Chỉ cần nếu bạn dùng tính năng [Visual test](#-visual-test--so-sánh-full-page-live-vs-figma):
 
@@ -139,6 +163,23 @@ Figma Design
 | `/shopify-new-section <tên>` | Tạo section mới không có Figma |
 | `/shopify-audit` | Kiểm tra & fix violations trong toàn bộ project |
 | `/shopify-audit sections/hero.liquid` | Audit 1 file cụ thể |
+
+### Slash commands — Audit & Clone website (Firecrawl)
+
+Phân tích một website bất kỳ trước khi clone sang Shopify. Đầu ra báo cáo là file HTML trong `audit-report/`.
+
+| Command | Dùng khi |
+|---------|---------|
+| `/site-analyze <url>` | Map site — đếm số trang con & **số template** cần dựng |
+| `/site-audit <url>` | Audit tổng (SEO + Design + QA) → báo cáo HTML |
+| `/site-structure-audit <url>` | Audit **cấu trúc/IA** (taxonomy, điều hướng, trang chính sách) → HTML |
+| `/site-ui-audit <url>` | Audit **UI/giao diện** (màu, font, component, grid, ảnh) → HTML |
+| `/site-design <url>` | Trích design system của site → **`DESIGN.md`** (màu, font, spacing, component) |
+| `/site-implement <url> [section]` | **Clone section/trang** từ site có sẵn → Shopify Liquid + SCSS ⭐ |
+
+**Thứ tự chạy:** `/site-analyze` → (audit tùy chọn) → `/site-design` → `/shopify-tokens-setup` → `/site-implement`. Chi tiết: [docs/clone-to-shopify-playbook.md](docs/clone-to-shopify-playbook.md#-quick-start--chạy-theo-đúng-thứ-tự).
+
+> Yêu cầu: đã cài & login `firecrawl` CLI. Quy trình clone đầy đủ: [docs/clone-to-shopify-playbook.md](docs/clone-to-shopify-playbook.md).
 
 ---
 
