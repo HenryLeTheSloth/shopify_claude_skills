@@ -442,6 +442,7 @@ Chỉ ra những điểm lệch về spacing, color, typography. Tolerance: ±2p
 ---
 
 ## 📤 Deploy
+* trước khi push theme cần check thêm SEO 
 
 ```
 npm run push
