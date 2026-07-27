@@ -2,3 +2,4 @@ node_modules
 screenshots/
 audit-report/
 .firecrawl/
+settings.local.json
