@@ -1,0 +1,55 @@
+<!doctype html>
+<!--
+  Cascade harness — verifies the override layer actually WINS against the vendor
+  bundle, without needing a store or Shopify CLI.
+
+  Serve it over http (never file://) and measure it with the same tool used on the
+  design and on the live theme:
+
+      python3 -m http.server 8081 --directory theme &
+      node scripts/measure.mjs http://127.0.0.1:8081/scripts/cascade-harness.html \
+        scripts/measure-primitives.json desktop
+
+  What it proves: tokens, @font-face, and the primitive type scale (body, h1/h2,
+  eyebrow, button, link, input) land exactly on the design's numbers.
+  What it does NOT prove: real Liquid rendering, real section ids, real data.
+  It closes phase P3 — never P4 or P5.
+
+  Load order below MUST mirror layout/theme.liquid: vendor bundle first, override second.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cascade harness</title>
+
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/jeor.css">
+
+<style>
+  /* harness chrome only — must not style any measured primitive */
+  body { margin: 0 }
+  .harness-row { padding: 24px 35px; border-bottom: 1px solid #0001 }
+  .harness-label { font: 11px/1 ui-monospace, monospace; color: #999; margin-bottom: 12px }
+</style>
+
+<div class="harness-row">
+  <div class="harness-label">body / paragraph</div>
+  <p>The quick brown fox jumps over the lazy dog.</p>
+</div>
+
+<div class="harness-row">
+  <div class="harness-label">.h1 / .h2 / .h6 (eyebrow)</div>
+  <p class="h6">Eyebrow text</p>
+  <h1 class="h1">Heading one</h1>
+  <h2 class="h2">Heading two</h2>
+</div>
+
+<div class="harness-row">
+  <div class="harness-label">.button / .link</div>
+  <a class="button" href="#">Shop now</a>
+  <a class="link" href="#">View all</a>
+</div>
+
+<div class="harness-row">
+  <div class="harness-label">.input</div>
+  <input class="input" type="email" placeholder="Email address">
+</div>

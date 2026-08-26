@@ -1,0 +1,42 @@
+{
+  "_comment": "Copy to <theme>/scripts/pixel-parity.config.json. Adding a page = adding one entry under `pages`, never editing compare-to-design.py.",
+
+  "liveBaseUrl": "http://127.0.0.1:9292",
+  "designBaseUrl": "http://127.0.0.1:8080",
+
+  "_baselineDir": "Where the golden-master JSON lives, relative to the THEME dir. Keep it in the repo and commit it — it is version-controlled ground truth.",
+  "baselineDir": "../docs_output/planning-artifacts/baseline",
+
+  "viewports": ["desktop", "mobile"],
+
+  "_tolerances": "Loosen anything here only with a written reason. Colors and grid templates have no tolerance by design — they are compared for exact equality.",
+  "tolerances": {
+    "length": 2.0,
+    "typography": 1.0,
+    "typographyProps": ["fontSize", "lineHeight", "letterSpacing"]
+  },
+
+  "pages": {
+    "homepage": {
+      "designFile": "index.html",
+      "livePath": "/",
+      "map": "compare-to-design.homepage.json",
+      "measure": "measure-homepage.json",
+      "baseline": "design-metrics-homepage-{v}.json"
+    },
+    "collection": {
+      "designFile": "02-collection.html",
+      "livePath": "/collections/new-in",
+      "map": "compare-to-design.collection.json",
+      "measure": "measure-collection.json",
+      "baseline": "design-metrics-collection-{v}.json"
+    },
+    "product": {
+      "designFile": "03-product.html",
+      "livePath": "/products/your-reference-product",
+      "map": "compare-to-design.product.json",
+      "measure": "measure-product.json",
+      "baseline": "design-metrics-product-{v}.json"
+    }
+  }
+}

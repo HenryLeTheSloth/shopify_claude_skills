@@ -1,0 +1,22 @@
+[
+ { "_comment": "One entry per selector. `action` entries are pre-measure steps, run in file order, and produce no row." },
+
+ { "sel": "body", "props": ["fontFamily","fontSize","fontWeight","lineHeight","color","backgroundColor"] },
+ { "sel": ".wrap", "props": ["paddingLeft","paddingRight","maxWidth"] },
+
+ { "sel": ".section", "props": ["paddingTop","paddingBottom"] },
+ { "sel": ".hero", "props": ["height","minHeight","maxHeight"] },
+ { "sel": ".hero-title", "props": ["fontFamily","fontSize","fontWeight","lineHeight","textTransform","color"] },
+ { "sel": ".hero-link", "props": ["fontSize","fontWeight","letterSpacing","height","minWidth","paddingLeft","borderRadius","border"] },
+
+ { "sel": ".grid", "props": ["width","gap","gridTemplateColumns","gridTemplateRows"] },
+ { "sel": ".card-media", "props": ["width","height","aspectRatio"] },
+ { "sel": ".card-info", "props": ["paddingTop","paddingLeft","paddingBottom","gap"] },
+ { "sel": ".card-name", "props": ["fontSize","fontWeight","lineHeight","letterSpacing","color"] },
+ { "sel": ".card-badge", "props": ["width","height","right","bottom","backgroundColor"] },
+
+ { "_comment": "Hidden UI: open it first, then measure. `>>>` walks into a shadow root — required for most modern themes' drawers, modals and popovers." },
+ { "action": "click", "sel": ".filter-sort-btn" },
+ { "action": "wait", "ms": 500 },
+ { "sel": ".facets-drawer >>> [part='content']", "props": ["width","backgroundColor","paddingTop"] }
+]

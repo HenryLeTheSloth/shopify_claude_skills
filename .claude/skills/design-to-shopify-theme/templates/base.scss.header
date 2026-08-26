@@ -1,0 +1,25 @@
+// =============================================================================
+// <BRAND> — Design System Foundation
+// =============================================================================
+// Compiles to assets/<brand>.css, which layout/theme.liquid loads AFTER the
+// vendor bundle.
+//
+// RULES
+//   1. assets/<vendor>.css is a vendor bundle — never edit it. Everything here
+//      is an override layer on top of it.
+//   2. Token values are lifted verbatim from design/<file>.html:<lines> so a
+//      diff against the design can be traced back one-to-one. Do not rename
+//      them to a "nicer" scheme.
+//   3. No !important. Where the cascade needs help, raise specificity the same
+//      way the design does.
+//   4. Section-specific CSS does NOT belong here — it goes in that section's
+//      {% stylesheet %} block. This file is global only.
+//   5. CSS round() must never be written in SCSS — Sass claims that function
+//      name. Any round(down, …) pixel-snapping goes in a {% stylesheet %}
+//      block, which is plain CSS.
+//   6. Never scope by #shopify-section-<id> — section-group ids are generated
+//      per store/theme, and no amount of classes beats an ID. Put the CSS
+//      variable on the element that CONSUMES it instead.
+//
+// Ground truth: <baselineDir>/design-metrics-*.json
+// =============================================================================

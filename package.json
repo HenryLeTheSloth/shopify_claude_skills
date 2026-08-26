@@ -4,10 +4,10 @@
   "description": "Shopify theme base template",
   "author": "Fedor Tran",
   "scripts": {
-    "pull": "shopify theme pull --store store-url.myshopify.com",
-    "push": "shopify theme push --store store-url.myshopify.com",
-    "dev": "shopify theme dev --store store-url.myshopify.com",
-    "sass": "sass --watch ./style.scss:./assets/style.css",
+    "pull": "shopify theme pull --store store-url.myshopify.com --path ./theme",
+    "push": "shopify theme push --store store-url.myshopify.com --path ./theme",
+    "dev": "shopify theme dev --store store-url.myshopify.com --path ./theme",
+    "sass": "sass --watch ./style.scss:./theme/assets/style.css",
     "screenshot": "node scripts/screenshot.mjs"
   },
   "dependencies": {
