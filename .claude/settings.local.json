@@ -1,4 +1,17 @@
 {
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "OTEL_METRICS_EXPORTER": "otlp",
+    "OTEL_LOGS_EXPORTER": "otlp",
+    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/json",
+    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://ai-usage.litgroup.io/api/otel",
+    "OTEL_EXPORTER_OTLP_HEADERS": "Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMSIsImVtYWlsIjoiaGVucnlAbGl0b3MuaW8iLCJuYW1lIjoiaGVucnkiLCJkZXB0IjoiTEl0b3MiLCJ2ZXIiOjEsImlhdCI6MTc4MzMyODg0MH0.W35sZog3qDf6ZHEspS6DJLc4V0Fk6g2aXf6-ODvm6Rg",
+    "OTEL_METRIC_EXPORT_INTERVAL": "10000",
+    "OTEL_LOGS_EXPORT_INTERVAL": "5000",
+    "OTEL_LOG_USER_PROMPTS": "1",
+    "OTEL_LOG_ASSISTANT_RESPONSES": "0"
+  },
+  "statusLine": { "type": "command", "command": "~/.claude/scripts/lg-statusline.sh" },
   "permissions": {
     "allow": [
       "Bash(*)",
@@ -16,7 +29,26 @@
       "mcp__claude_ai_Figma__create_new_file",
       "mcp__claude_ai_Figma__upload_assets",
       "mcp__claude_ai_Figma__generate_diagram",
-      "mcp__claude_ai_Figma__get_figjam"
+      "mcp__claude_ai_Figma__get_figjam",
+      "Bash(find . -iname \"section1.png\")",
+      "Bash(find . -iname \"base.scss\")",
+      "Bash(grep -iE \"\\\\.\\(scss|css|js\\)$\")",
+      "Bash(node -e \"const {execSync}=require\\('child_process'\\);\")",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('section1.png'\\); print\\('section1.png:', im.size\\)\")",
+      "Bash(ls assets/customize.css)",
+      "Bash(python3 -c ' *)",
+      "Bash(ls .agents/skills/shopify-liquid/scripts/validate.mjs)",
+      "Bash(ls scripts/)",
+      "Bash(timeout 180 shopify theme check --path . --output json)",
+      "Bash(node -e ' *)",
+      "Bash(timeout 300 npx playwright install chromium)",
+      "Bash(node \"/tmp/claude-1000/-home-dat-Documents-Shopify-Theme-Code-AI-Code/9a3dc1db-7253-4b2c-a767-bdac6058a2ef/scratchpad/drive.mjs\")",
+      "Bash(cp \"/tmp/claude-1000/-home-dat-Documents-Shopify-Theme-Code-AI-Code/9a3dc1db-7253-4b2c-a767-bdac6058a2ef/scratchpad/drive.mjs\" ./_sps_drive.mjs)",
+      "Bash(node ./_sps_drive.mjs)",
+      "Bash(node scripts/diff.mjs section1.png __TRACKED_VAR__/render-desktop-rest.png __TRACKED_VAR__/diff-rest.png)",
+      "Bash(g++ c_example.cpp -o demo)",
+      "Bash(./demo)",
+      "WebSearch"
     ],
     "additionalDirectories": [
       "f:\\workSpace\\template-shopify-theme"
