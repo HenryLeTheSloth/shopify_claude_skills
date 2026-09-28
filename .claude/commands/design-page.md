@@ -28,6 +28,8 @@ Ví dụ:
 4. **Nếu đã có trang khác trong config** — đọc handover của trang gần nhất trong
    `docs_output/implementation-artifacts/`, mục "RÀNG BUỘC SẼ CẮN NGƯỢC". Đây là điều kiện
    bắt buộc, không phải tuỳ chọn: những ràng buộc đó là lý do trang này sẽ không phá trang trước.
+5. Nạp skill `ponytail` (mức `full`) — áp cho P2 và P4. **Số đo thắng ponytail**: bản rút gọn nào
+   làm tăng sai lệch thì bỏ, không tranh luận.
 
 ---
 
@@ -68,7 +70,10 @@ Viết `docs_output/planning-artifacts/<page>-implementation-plan.md` theo
 
 Bảng bản đồ khối → section, mỗi khối chọn 1 trong 4: Reuse · Reuse+CSS · Reuse+hunk · **Viết mới**.
 
-Mỗi ô "Viết mới" phải có **một câu lý do kiểm chứng được**, tốt nhất là số học. Nếu chọn
+Mỗi ô "Viết mới" phải có **một câu lý do kiểm chứng được**, tốt nhất là số học. Đây chính là thang của
+ponytail: dừng ở bậc đầu tiên đứng được — section/snippet/block có sẵn → setting của theme → CSS
+trong `custom.css` → hunk Liquid → mới tới viết mới. Không thêm thư viện JS cho thứ CSS hoặc HTML
+native làm được (`<details>`, `<dialog>`, `scroll-snap`, `aspect-ratio`...). Nếu chọn
 "thử reuse trước" thì ghi rõ **trigger chuyển** kèm số.
 
 Điền vế phải của `compare-to-design.<page>.json` bằng selector **live** thật của theme.
@@ -84,6 +89,12 @@ Chỉ chạy nếu đây là trang **đầu tiên** của dự án. Trang thứ 
 
 Token copy **nguyên văn, giữ nguyên tên** của design. `@font-face` self-host nếu cần.
 Đầu file SCSS dán `templates/base.scss.header`.
+
+**Mọi chỉnh sửa CSS đi vào MỘT file `assets/custom.css`** (build từ `base.scss`/`style.scss`), nạp
+**sau** CSS vendor trong `layout/theme.liquid`. Không sửa thẳng CSS của theme gốc — kể cả file
+`assets/*.css` của vendor hay khối `<style>` inline trong layout. Section viết mới dùng
+`{% stylesheet %}` của chính nó; override section vendor cũng đi qua `custom.css`, scope theo class/
+`data-ui-component`, không `!important`.
 
 **Cổng:** đo `scripts/cascade-harness.html` — không cần store.
 
@@ -105,6 +116,10 @@ Gặp bẫy → tra `references/03-pitfall-catalog.md` trước khi tự chẩn 
 
 **Cổng mỗi khối:** 0 ngoài dung sai ở desktop **và** mobile.
 
+Qua cổng rồi → chạy `/ponytail-review` trên diff của khối đó. Áp từng mục cắt, **đo lại 2 viewport**;
+mục nào làm lệch thì hoàn tác mục đó. Không cắt: selector/`ignore` của bộ đo, marker `<BRAND> HUNK`,
+thuộc tính a11y, schema setting mà merchant cần chỉnh.
+
 ---
 
 ## P5 — Gate
@@ -118,7 +133,9 @@ python3 scripts/validate-template.py templates/<page>.json <kind>
 git diff --stat theme/assets/<vendor>.css            # PHẢI rỗng
 ```
 
-Thêm: không `!important` mới · file vendor sửa thì mỗi hunk có marker `<BRAND> HUNK`.
+Thêm: không `!important` mới · file vendor sửa thì mỗi hunk có marker `<BRAND> HUNK` ·
+CSS mới chỉ nằm trong `assets/custom.css` (`git diff` các file CSS vendor và khối `<style>` inline PHẢI rỗng) ·
+`/ponytail-review` trên toàn bộ diff của trang ra `Lean already. Ship.` hoặc mọi mục còn lại có lý do.
 
 Rồi chạy `/design-handover <page>`.
 
@@ -132,3 +149,8 @@ Rồi chạy `/design-handover <page>`.
 - **Số của phase trước có thể hết đúng.** Nếu `--all` cho thấy trang cũ đã lệch, ghi thẳng vào
   handover kèm nguyên nhân, đừng im lặng sửa rồi báo như chưa có gì.
 - **Phát hiện ngoài phạm vi thì báo, đừng tự sửa** — sửa sẽ phải chạy lại cổng của phase trước.
+- **CSS chỉ được thêm vào `assets/custom.css`** (qua `base.scss`), không bao giờ sửa thẳng CSS của theme gốc.
+  Cần markup mới → hunk có marker trong Liquid; cần style → `custom.css`.
+- **Ponytail rút gọn code, không rút gọn cổng.** Chỗ đi tắt có trần đã biết → comment
+  `ponytail: <trần>, <khi nào nâng cấp>` để handover gom lại — Liquid `{% # ponytail: ... %}`,
+  CSS/SCSS `/* ponytail: ... */`, JS `// ponytail: ...`.

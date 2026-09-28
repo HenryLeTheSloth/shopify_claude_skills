@@ -15,7 +15,11 @@ python3 scripts/compare-to-design.py <page> mobile  | head -3
 python3 scripts/compare-to-design.py --all | tail -12
 shopify theme check 2>&1 | tail -3
 git diff --stat theme/ | tail -3
+grep -rnE '(#|//|/\*) ?ponytail:' theme/ --include=*.liquid --include=*.css --include=*.scss --include=*.js
 ```
+
+Mỗi dòng `ponytail:` là một chỗ đi tắt có chủ ý (ledger theo `/ponytail-debt`) → ghi vào
+§8 SAI LỆCH CÒN LẠI CÓ CHỦ Ý. Dòng nào không nêu điều kiện nâng cấp → thêm vào việc còn treo 🟡.
 
 ## 2. Viết file
 
